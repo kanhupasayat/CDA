@@ -20,6 +20,28 @@ from django.contrib import messages
 from .models import StudentInfo
 
 
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important to keep the user logged in
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('profile')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'change_password.html', {
+        'form': form
+    })
+
+
+
 
 
 # Create your views here.
@@ -167,7 +189,7 @@ def profile(request):
 
 @login_required
 def update_profile(request):
-    student = get_object_or_404(StudentInfo, user=request.user)
+    student = StudentInfo.objects.get(user=request.user)
 
     if request.method == 'POST':
         student.roll_number = request.POST.get('roll_number')
@@ -196,16 +218,9 @@ def update_profile(request):
     return render(request, 'update_profile.html', {'student': student})
 
 
-def home(request):
-    return render(request, "index-university.html")
-
-def about(request):
-    return render(request, 'about-three.html')
 
 
-# def profile(request):
-#     student = get_object_or_404(StudentInfo,user=request.user)
-#     return render(request,'student_profile.html', {'student': student})
+
 
 
 
@@ -249,3 +264,17 @@ def contact_us(request):
         return redirect('contact-us')
 
     return render(request,"contact-us.html")
+
+
+
+def home(request):
+    if request.user.is_authenticated and request.user.is_superuser:
+        return render(request, "indexadmin.html")
+    return render(request, "index-university.html")
+
+def about(request):
+    return render(request, 'about-three.html')
+
+
+
+

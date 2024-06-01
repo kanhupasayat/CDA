@@ -29,6 +29,7 @@
     <!-- Site Stylesheet -->
     <link rel="stylesheet" href="static/assets/css/app.css">
 
+
 </head>
 
 <body class="sticky-header">
@@ -227,7 +228,7 @@
                     <div class="col-lg-5">
                         <div class="login-form-box registration-form">
                             <h3 class="title">Sign up</h3>
-                            <p>Already have an account? <a href="/signup">Sign in</a></p>
+                            <p>Already have an account? <a href="/login">Sign in</a></p>
                             <form method="POST" action="/signup">
                                 {% csrf_token %}
                                 {% if messages %}
@@ -289,8 +290,8 @@
                             <div class="edu-footer-widget">
                                 <div class="logo">
                                     <a href="index-university.html">
-                                        <img class="logo-light" src="static/assets/images/logo/logo-dark.png" alt="Corporate Logo">
-                                        <img class="logo-dark" src="static/assets/images/logo/logo-white.png" alt="Corporate Logo">
+                                        <img class="logo-light flogo" src="static/assets/images/logo/logo-dark.png" alt="Corporate Logo">
+                                        <img class="logo-dark flogo" src="static/assets/images/logo/logo-white.png" alt="Corporate Logo">
                                     </a>
                                 </div>
                                 <div class="widget-information">
