@@ -64,7 +64,9 @@
                             <ul class="header-info">
                                 <li><a href="/login">Login</a></li>
                                 <li><a href="/signup">sing up</a></li>
-                                <li class="header-btn"><a href="{% url 'student_info_form' %}" class="edu-btn btn-secondary btn-medium">Register <i class="icon-4"></i></a></li>
+                                        <li class="header-btn">
+                                            <a href="" class="edu-btn btn-secondary btn-medium">Show Student<i class="icon-4"></i></a>
+                                        </li>
                             </ul>
                         </div>
                     </div>
@@ -89,7 +91,7 @@
                                     <li class=""><a href="/">Home</a>
 
                                     </li>
-                                    <li class="has-droupdown"><a href="#">Pages</a>
+                                    <li class="has-droupdown"><a href="#">About/User</a>
                                                 <ul class="submenu">
                                                     <li><a href="{% url 'about' %}">About</a></li>
                                                 {% if request.user.is_authenticated %}

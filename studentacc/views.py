@@ -6,7 +6,7 @@ from .models import StudentInfo
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404
+
 from django.urls import reverse
 
 from django.contrib.auth.tokens import default_token_generator
@@ -15,7 +15,7 @@ from django.utils.http import urlsafe_base64_encode
 
 
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
+
 from django.contrib import messages
 from .models import StudentInfo
 
@@ -74,6 +74,8 @@ def login_page(request):
 
 def logout_page(request):
     logout(request)
+    messages.success(request, 'Logout successfully!')
+
     return redirect(reverse('login_page'))
 
 
@@ -124,6 +126,7 @@ def signup(request):
 
 @login_required
 def student_info_form(request):
+
     if request.method == 'POST':
         roll_number = request.POST['roll_number']
         first_name = request.POST['first_name']
@@ -212,7 +215,6 @@ def update_profile(request):
             student.image = request.FILES['image']
 
         student.save()
-        messages.success(request, 'Your profile has been updated successfully!')
         return redirect('profile')
 
     return render(request, 'update_profile.html', {'student': student})

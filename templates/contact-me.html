@@ -65,8 +65,13 @@
                         <div class="header-top-right">
                             <ul class="header-info">
                                 <li><a href="/login">Login</a></li>
-                                <li><a href="/signup">sing up</a></li>
-                                <li class="header-btn"><a href="{% url 'student_info_form' %}" class="edu-btn btn-secondary btn-medium">Register <i class="icon-4"></i></a></li>
+                                <!--<li><a href="/signup">sing up</a></li>-->
+                                    {% if user.is_authenticated %}
+                                        <li class="header-btn">
+                                       <!--      <a href="{% url 'student_info_form' %}" class="edu-btn btn-secondary btn-medium">Register <i class="icon-4"></i></a>-->
+                                        </li>
+                                    {% endif %}
+
                             </ul>
                         </div>
                     </div>
@@ -79,9 +84,8 @@
                         <div class="header-brand">
                             <div class="logo">
                                 <a href="/">
-                                    <img class="logo-light logo-img" src="static/assets/images/logo/logo-dark-2.png" alt="Corporate Logo">
-                                    <img class="logo-dark logo-img" src="static/assets/images/logo/logo-light-2.png" alt="Corporate Logo">
-
+                                    <img class="logo-light logo-img" src="{% static 'assets/images/logo/logo-dark-2.png' %}" alt="Corporate Logo">
+                                    <img class="logo-dark logo-img" src="{% static 'assets/images/logo/logo-light-2.png' %}" alt="Corporate Logo">
                                 </a>
                             </div>
                         </div>
@@ -91,7 +95,7 @@
                                     <li class=""><a href="/">Home</a>
 
                                     </li>
-                                    <li class="has-droupdown"><a href="#">Pages</a>
+                                    <li class="has-droupdown"><a href="#">About/User</a>
                                                 <ul class="submenu">
                                                     <li><a href="{% url 'about' %}">About</a></li>
                                                 {% if request.user.is_authenticated %}
@@ -131,8 +135,8 @@
                     <div class="header-top">
                         <div class="logo">
                             <a href="/">
-                                <img class="logo-light" src="static/assets/images/logo/logo-dark.png" alt="Corporate Logo">
-                                <img class="logo-dark" src="static/assets/images/logo/logo-white.png" alt="Corporate Logo">
+                                <img class="logo-light" src="{% static 'assets/images/logo/logo-dark.png' %}" alt="Corporate Logo">
+                                <img class="logo-dark" src="{% static 'assets/images/logo/logo-white.png' %}" alt="Corporate Logo">
                             </a>
                         </div>
                         <div class="close-menu">
@@ -149,14 +153,14 @@
                                     <ul class="submenu mega-sub-menu-01">
                                         <li>
                                             <a href="https://1.envato.market/5bQ022">
-                                                <img src="static/assets/images/others/mega-menu-image.webp" alt="advertising Image">
+                                                <img src="{% static 'assets/images/others/mega-menu-image.webp' %}" alt="advertising Image">
                                             </a>
                                         </li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
-                         <li class="has-droupdown"><a href="#">Pages</a>
+                         <li class="has-droupdown"><a href="#">About/User</a>
                                                 <ul class="submenu">
                                                     <li><a href="{% url 'about' %}">About</a></li>
                                                 {% if request.user.is_authenticated %}
@@ -183,8 +187,9 @@
             <div class="edu-search-popup">
                 <div class="content-wrap">
                     <div class="site-logo">
-                        <img class="logo-light" src="static/assets/images/logo/logo-dark.png" alt="Corporate Logo">
-                        <img class="logo-dark" src="static/assets/images/logo/logo-white.png" alt="Corporate Logo">
+                        <img class="logo-light" src="{% static 'assets/images/logo/logo-dark.png' %}" alt="Corporate Logo">
+                        <img class="logo-dark" src="{% static 'assets/images/logo/logo-white.png' %}" alt="Corporate Logo">
+
                     </div>
                     <div class="close-button">
                         <button class="close-trigger"><i class="icon-73"></i></button>
@@ -199,38 +204,6 @@
             </div>
             <!-- End Search Popup  -->
         </header>
-        <!--=====================================-->
-        <!--=       Breadcrumb Area Start      =-->
-        <!--=====================================-->
-
-
-        <div class="edu-breadcrumb-area">
-            <div class="container">
-                <div class="breadcrumb-inner">
-                    <div class="page-title">
-                        <h1 class="title">Contact Me</h1>
-                    </div>
-                    <ul class="edu-breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="separator"><i class="icon-angle-right"></i></li>
-                        <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                        <li class="separator"><i class="icon-angle-right"></i></li>
-                        <li class="breadcrumb-item active" aria-current="page">Contact Me</li>
-                    </ul>
-                </div>
-            </div>
-            <ul class="shape-group">
-                <li class="shape-1">
-                    <span></span>
-                </li>
-                <li class="shape-2 scene"><img data-depth="2" src="static/assets/images/about/shape-13.png" alt="shape"></li>
-                <li class="shape-3 scene"><img data-depth="-2" src="static/assets/images/about/shape-15.png" alt="shape"></li>
-                <li class="shape-4">
-                    <span></span>
-                </li>
-                <li class="shape-5 scene"><img data-depth="2" src="static/assets/images/about/shape-07.png" alt="shape"></li>
-            </ul>
-        </div>
 
         <!--=====================================-->
         <!--=       Contact Me Area Start       =-->

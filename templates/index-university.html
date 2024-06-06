@@ -10,22 +10,23 @@
     <meta name="CDA | Career Development Academy Rourkela" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="static/assets/images/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/favicon.png' %}">
     <!-- CSS
-	============================================ -->
-    <link rel="stylesheet" href="static/assets/css/vendor/bootstrap.min.css">
-    <link rel="stylesheet" href="static/assets/css/vendor/icomoon.css">
-    <link rel="stylesheet" href="static/assets/css/vendor/remixicon.css">
-    <link rel="stylesheet" href="static/assets/css/vendor/magnifypopup.min.css">
-    <link rel="stylesheet" href="static/assets/css/vendor/odometer.min.css">
-    <link rel="stylesheet" href="static/assets/css/vendor/lightbox.min.css">
-    <link rel="stylesheet" href="static/assets/css/vendor/animation.min.css">
-    <link rel="stylesheet" href="static/assets/css/vendor/jqueru-ui-min.css">
-    <link rel="stylesheet" href="static/assets/css/vendor/swiper-bundle.min.css">
-    <link rel="stylesheet" href="static/assets/css/vendor/tipped.min.css">
-
+    ============================================ -->
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/remixicon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/magnifypopup.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/odometer.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/lightbox.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/animation.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/jqueru-ui-min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/vendor/tipped.min.css' %}">
+    
     <!-- Site Stylesheet -->
-    <link rel="stylesheet" href="static/assets/css/app.css">
+    <link rel="stylesheet" href="{% static 'assets/css/app.css' %}">
+    
 
 </head>
 
@@ -63,8 +64,13 @@
                         <div class="header-top-right">
                             <ul class="header-info">
                                 <li><a href="/login">Login</a></li>
-<!--                                <li><a href="/signup">sing up</a></li>-->
-                                <li class="header-btn"><a href="{% url 'student_info_form' %}" class="edu-btn btn-secondary btn-medium">Register <i class="icon-4"></i></a></li>
+                                <!--<li><a href="/signup">sing up</a></li>-->
+                                    {% if user.is_authenticated %}
+                                        <li class="header-btn">
+                                       <!--      <a href="{% url 'student_info_form' %}" class="edu-btn btn-secondary btn-medium">Register <i class="icon-4"></i></a>-->
+                                        </li>
+                                    {% endif %}
+
                             </ul>
                         </div>
                     </div>
@@ -77,9 +83,8 @@
                         <div class="header-brand">
                             <div class="logo">
                                 <a href="/">
-                                    <img class="logo-light logo-img" src="static/assets/images/logo/logo-dark-2.png" alt="Corporate Logo">
-                                    <img class="logo-dark logo-img" src="static/assets/images/logo/logo-light-2.png" alt="Corporate Logo">
-
+                                    <img class="logo-light logo-img" src="{% static 'assets/images/logo/logo-dark-2.png' %}" alt="Corporate Logo">
+                                    <img class="logo-dark logo-img" src="{% static 'assets/images/logo/logo-light-2.png' %}" alt="Corporate Logo">
                                 </a>
                             </div>
                         </div>
@@ -89,7 +94,7 @@
                                     <li class=""><a href="/">Home</a>
 
                                     </li>
-                                    <li class="has-droupdown"><a href="#">Pages</a>
+                                    <li class="has-droupdown"><a href="#">About/User</a>
                                                 <ul class="submenu">
                                                     <li><a href="{% url 'about' %}">About</a></li>
                                                 {% if request.user.is_authenticated %}
@@ -129,8 +134,8 @@
                     <div class="header-top">
                         <div class="logo">
                             <a href="/">
-                                <img class="logo-light" src="static/assets/images/logo/logo-dark.png" alt="Corporate Logo">
-                                <img class="logo-dark" src="static/assets/images/logo/logo-white.png" alt="Corporate Logo">
+                                <img class="logo-light" src="{% static 'assets/images/logo/logo-dark.png' %}" alt="Corporate Logo">
+                                <img class="logo-dark" src="{% static 'assets/images/logo/logo-white.png' %}" alt="Corporate Logo">
                             </a>
                         </div>
                         <div class="close-menu">
@@ -147,14 +152,14 @@
                                     <ul class="submenu mega-sub-menu-01">
                                         <li>
                                             <a href="https://1.envato.market/5bQ022">
-                                                <img src="static/assets/images/others/mega-menu-image.webp" alt="advertising Image">
+                                                <img src="{% static 'assets/images/others/mega-menu-image.webp' %}" alt="advertising Image">
                                             </a>
                                         </li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
-                         <li class="has-droupdown"><a href="#">Pages</a>
+                         <li class="has-droupdown"><a href="#">About/User</a>
                                                 <ul class="submenu">
                                                     <li><a href="{% url 'about' %}">About</a></li>
                                                 {% if request.user.is_authenticated %}
@@ -181,8 +186,9 @@
             <div class="edu-search-popup">
                 <div class="content-wrap">
                     <div class="site-logo">
-                        <img class="logo-light" src="static/assets/images/logo/logo-dark.png" alt="Corporate Logo">
-                        <img class="logo-dark" src="static/assets/images/logo/logo-white.png" alt="Corporate Logo">
+                        <img class="logo-light" src="{% static 'assets/images/logo/logo-dark.png' %}" alt="Corporate Logo">
+                        <img class="logo-dark" src="{% static 'assets/images/logo/logo-white.png' %}" alt="Corporate Logo">
+
                     </div>
                     <div class="close-button">
                         <button class="close-trigger"><i class="icon-73"></i></button>
@@ -204,7 +210,7 @@
             <div class="swiper university-activator">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <img data-transform-origin='center center' data-src="static/assets/images/bg/bg-image-17.webp" class="swiper-lazy" alt="image">
+                        <img data-transform-origin='center center' data-src="{% static 'assets/images/bg/bg-image-17.webp' %}" class="swiper-lazy" alt="image">
                         <div class="thumbnail-bg-content">
                             <div class="container edublink-animated-shape">
                                 <div class="row">
@@ -223,7 +229,7 @@
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <img data-transform-origin='center center' data-src="static/assets/images/bg/bg-image-28.webp" class="swiper-lazy" alt="image">
+                        <img data-transform-origin='center center' data-src="{%static 'assets/images/bg/bg-image-28.webp' %}" class="swiper-lazy" alt="image">
                         <div class="thumbnail-bg-content">
                             <div class="container edublink-animated-shape">
                                 <div class="row">
@@ -242,7 +248,7 @@
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <img data-transform-origin='center center' data-src="static/assets/images/bg/bg-image-26.webp" class="swiper-lazy" alt="image">
+                        <img data-transform-origin='center center' data-src="{%static 'assets/images/bg/bg-image-26.webp' %}" class="swiper-lazy" alt="image">
                         <div class="thumbnail-bg-content">
                             <div class="container edublink-animated-shape">
                                 <div class="row">
@@ -272,13 +278,13 @@
             </div>
             <ul class="shape-group">
                 <li class="shape-1 scene" data-sal-delay="1000" data-sal="fade" data-sal-duration="1000">
-                    <img data-depth="2" src="static/assets/images/others/shape-10.png" alt="Shape">
+                    <img data-depth="2" src="{% static 'assets/images/others/shape-10.png' %}" alt="Shape">
                 </li>
                 <li class="shape-2 scene" data-sal-delay="1000" data-sal="fade" data-sal-duration="1000">
-                    <img data-depth="-3" src="static/assets/images/others/shape-11.png" alt="Shape">
+                    <img data-depth="-3" src="{% static 'assets/images/others/shape-11.png' %}" alt="Shape">
                 </li>
                 <li class="shape-3">
-                    <img src="static/assets/images/others/shape-25.png" alt="Shape">
+                    <img src="{% static 'assets/images/others/shape-25.png' %}" alt="Shape">
                 </li>
             </ul>
         </div>
@@ -291,7 +297,7 @@
                 <div class="features-grid-wrap">
                     <div class="features-box features-style-3 color-primary-style edublink-svg-animate">
                         <div class="icon">
-                            <img class="svgInject" src="static/assets/images/animated-svg-icons/scholarship-facility.svg" alt="animated icon">
+                            <img class="svgInject" src="{% static 'assets/images/animated-svg-icons/scholarship-facility.svg' %}" alt="animated icon">
                             <!-- <i class="icon-34"></i> -->
                         </div>
                         <div class="content">
@@ -301,7 +307,7 @@
                     </div>
                     <div class="features-box features-style-3 color-secondary-style edublink-svg-animate">
                         <div class="icon">
-                            <img class="svgInject" src="static/assets/images/animated-svg-icons/skilled-lecturers.svg" alt="animated icon">
+                            <img class="svgInject" src="{% static 'assets/images/animated-svg-icons/skilled-lecturers.svg' %}" alt="animated icon">
                         </div>
                         <div class="content">
                             <h4 class="title">Skilled Lecturers</h4>
@@ -310,7 +316,7 @@
                     </div>
                     <div class="features-box features-style-3 color-extra02-style edublink-svg-animate">
                         <div class="icon">
-                            <img class="svgInject" src="static/assets/images/animated-svg-icons/book-library.svg" alt="animated icon">
+                            <img class="svgInject" src="{% static 'assets/images/animated-svg-icons/book-library.svg' %}" alt="animated icon">
                             <!-- <i class="icon-36"></i> -->
                         </div>
                         <div class="content">
@@ -373,21 +379,21 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="about-image-gallery">
-                            <img class="main-img-1" data-sal-delay="100" data-sal="slide-up" data-sal-duration="800" src="static/assets/images/about/about-04.webp" alt="About Image">
-                            <img class="main-img-2" data-sal-delay="100" data-sal="slide-left" data-sal-duration="800" src="static/assets/images/about/about-05.webp" alt="About Image">
+                            <img class="main-img-1" data-sal-delay="100" data-sal="slide-up" data-sal-duration="800" src="{% static 'assets/images/about/about-04.webp' %}" alt="About Image">
+                            <img class="main-img-2" data-sal-delay="100" data-sal="slide-left" data-sal-duration="800" src="{% static 'assets/images/about/about-05.webp' %}" alt="About Image">
                             <ul class="shape-group">
                                 <li class="shape-1 scene" data-sal-delay="500" data-sal="fade" data-sal-duration="200">
-                                    <img data-depth="2" src="static/assets/images/about/shape-13.png" alt="Shape">
+                                    <img data-depth="2" src="{% static 'assets/images/about/shape-13.png' %}" alt="Shape">
                                 </li>
                                 <li class="shape-2 scene" data-sal-delay="500" data-sal="fade" data-sal-duration="200">
-                                    <img data-depth="-2" src="static/assets/images/about/shape-39.png" alt="Shape">
+                                    <img data-depth="-2" src="{% static 'assets/images/about/shape-39.png' %}" alt="Shape">
                                 </li>
                                 <li class="shape-3 scene" data-sal-delay="500" data-sal="fade" data-sal-duration="200">
-                                    <img data-depth="2" src="static/assets/images/about/shape-07.png" alt="Shape">
+                                    <img data-depth="2" src="{% static 'assets/images/about/shape-07.png' %}" alt="Shape">
                                 </li>
                                 <li class="shape-4" data-sal-delay="500" data-sal="fade" data-sal-duration="200">
                                     <span></span>
-                                </li>
+                                </li>                                
                             </ul>
                         </div>
                     </div>
@@ -395,7 +401,7 @@
             </div>
             <ul class="shape-group">
                 <li class="shape-5">
-                    <img class="rotateit" src="static/assets/images/about/shape-13.png" alt="Shape">
+                    <img class="rotateit" src="{% static 'assets/images/about/shape-13.png' %}" alt="Shape">
                 </li>
                 <li class="shape-6">
                     <span></span>
@@ -473,7 +479,7 @@
                                 <div class="inner">
                                     <div class="thumbnail">
                                         <a href="course-details.html">
-                                            <img src="static/assets/images/course/course-08.jpg" alt="Course Meta">
+                                            <img src="{% static 'assets/images/course/course-08.jpg' %}" alt="Course Meta">
                                         </a>
                                         <div class="time-top">
                                             <span class="duration"><i class="icon-61"></i>Online + Onsite</span>
@@ -509,7 +515,7 @@
                                 <div class="inner">
                                     <div class="thumbnail">
                                         <a href="course-details.html">
-                                            <img src="static/assets/images/course/course-09.jpg" alt="Course Meta">
+                                            <img src="{% static 'assets/images/course/course-09.jpg' %}" alt="Course Meta">
                                         </a>
                                         <div class="time-top">
                                             <span class="duration"><i class="icon-61"></i>Online + Onsite</span>
@@ -545,7 +551,7 @@
                                 <div class="inner">
                                     <div class="thumbnail">
                                         <a href="course-details.html">
-                                            <img src="static/assets/images/course/course-10.jpg" alt="Course Meta">
+                                            <img src="{% static 'assets/images/course/course-10.jpg' %}" alt="Course Meta">
                                         </a>
                                         <div class="time-top">
                                             <span class="duration"><i class="icon-61"></i>Online Only</span>
@@ -580,13 +586,13 @@
             </div>
             <ul class="shape-group">
                 <li class="shape-1">
-                    <img class="d-block-shape-light" data-depth="2" src="static/assets/images/others/map-shape-3.png" alt="Shape">
-                    <img class="d-none-shape-dark" data-depth="2" src="static/assets/images/others/3-Home-1.png" alt="Shape">
+                    <img class="d-block-shape-light" data-depth="2" src="{% static 'assets/images/others/map-shape-3.png' %}" alt="Shape">
+                    <img class="d-none-shape-dark" data-depth="2" src="{% static 'assets/images/others/3-Home-1.png' %}" alt="Shape">
                 </li>
                 <li class="shape-2">
-                    <img class="d-block-shape-light" data-depth="2" src="static/assets/images/others/map-shape-3.png" alt="Shape">
-                    <img class="d-none-shape-dark" data-depth="2" src="static/assets/images/others/dark-map-shape-3.png" alt="Shape">
-                </li>
+                    <img class="d-block-shape-light" data-depth="2" src="{% static 'assets/images/others/map-shape-3.png' %}" alt="Shape">
+                    <img class="d-none-shape-dark" data-depth="2" src="{% static 'assets/images/others/dark-map-shape-3.png' %}" alt="Shape">
+                </li>   
             </ul>
         </div>
         <!-- End Course Area -->
@@ -601,7 +607,7 @@
                         <div class="campus-image-gallery">
                             <div class="campus-thumbnail">
                                 <div class="thumbnail">
-                                    <img src="static/assets/images/others/campus-01.webp" alt="Campus">
+                                    <img src="{% static 'assets/images/others/campus-01.webp' %}" alt="Campus">
                                 </div>
                             </div>
                             <ul class="shape-group">
@@ -609,10 +615,10 @@
                                     <span data-depth=".8"></span>
                                 </li>
                                 <li class="shape-2 scene">
-                                    <img data-depth="1.5" src="static/assets/images/about/shape-21.png" alt="Shape">
+                                    <img data-depth="1.5" src="{% static 'assets/images/about/shape-21.png' %}" alt="Shape">
                                 </li>
                                 <li class="shape-3 scene">
-                                    <img data-depth="-1.5" src="static/assets/images/about/shape-13.png" alt="Shape">
+                                    <img data-depth="-1.5" src="{% static 'assets/images/about/shape-13.png' %}" alt="Shape">
                                 </li>
                             </ul>
                         </div>
@@ -664,7 +670,7 @@
                                     <span data-depth="2"></span>
                                 </li>
                                 <li class="shape-6 scene">
-                                    <img data-depth="-2" src="static/assets/images/about/shape-25.png" alt="Shape">
+                                    <img data-depth="-2" src="{% static 'assets/images/about/shape-25.png' %}" alt="Shape">
                                 </li>
                             </ul>
                         </div>
@@ -694,7 +700,7 @@
                         <div class="swiper-slide">
                             <div class="testimonial-slide">
                                 <div class="content">
-                                    <div class="logo"><img src="static/assets/images/testimonial/logo-01.png" alt="Logo"></div>
+                                    <div class="logo"><img src="{% static 'assets/images/testimonial/logo-01.png' %}" alt="Logo"></div>
                                     <p>Lorem ipsum dolor amet consectur elit adicing elit sed do umod tempor ux incididunt enim ad minim veniam quis nosrud citation laboris nisiste aliquip comodo perspiatix.</p>
                                     <div class="rating-icon">
                                         <i class="icon-23"></i>
@@ -706,7 +712,7 @@
                                 </div>
                                 <div class="author-info">
                                     <div class="thumb">
-                                        <img src="static/assets/images/testimonial/testimonial-01.png" alt="Testimonial">
+                                        <img src="{% static 'assets/images/testimonial/testimonial-01.png' %}" alt="Testimonial">
                                     </div>
                                     <div class="info">
                                         <h5 class="title">Ray Sanchez</h5>
@@ -718,7 +724,7 @@
                         <div class="swiper-slide">
                             <div class="testimonial-slide">
                                 <div class="content">
-                                    <div class="logo"><img src="static/assets/images/testimonial/logo-02.png" alt="Logo"></div>
+                                    <div class="logo"><img src="{% static 'assets/images/testimonial/logo-02.png' %}" alt="Logo"></div>
                                     <p>Lorem ipsum dolor amet consectur elit adicing elit sed do umod tempor ux incididunt enim ad minim veniam quis nosrud citation laboris nisiste aliquip comodo perspiatix.</p>
                                     <div class="rating-icon">
                                         <i class="icon-23"></i>
@@ -730,7 +736,7 @@
                                 </div>
                                 <div class="author-info">
                                     <div class="thumb">
-                                        <img src="static/assets/images/testimonial/testimonial-02.png" alt="Testimonial">
+                                        <img src="{% static 'assets/images/testimonial/testimonial-02.png' %}" alt="Testimonial">
                                     </div>
                                     <div class="info">
                                         <h5 class="title">Thomas Lopez</h5>
@@ -742,7 +748,7 @@
                         <div class="swiper-slide">
                             <div class="testimonial-slide">
                                 <div class="content">
-                                    <div class="logo"><img src="static/assets/images/testimonial/logo-03.png" alt="Logo"></div>
+                                    <div class="logo"><img src="{% static 'assets/images/testimonial/logo-03.png' %}" alt="Logo"></div>
                                     <p>Lorem ipsum dolor amet consectur elit adicing elit sed do umod tempor ux incididunt enim ad minim veniam quis nosrud citation laboris nisiste aliquip comodo perspiatix.</p>
                                     <div class="rating-icon">
                                         <i class="icon-23"></i>
@@ -754,7 +760,7 @@
                                 </div>
                                 <div class="author-info">
                                     <div class="thumb">
-                                        <img src="static/assets/images/testimonial/testimonial-03.png" alt="Testimonial">
+                                        <img src="{% static 'assets/images/testimonial/testimonial-03.png' %}" alt="Testimonial">
                                     </div>
                                     <div class="info">
                                         <h5 class="title">Amber Page</h5>
@@ -766,7 +772,7 @@
                         <div class="swiper-slide">
                             <div class="testimonial-slide">
                                 <div class="content">
-                                    <div class="logo"><img src="static/assets/images/testimonial/logo-02.png" alt="Logo"></div>
+                                    <div class="logo"><img src="{% static 'assets/images/testimonial/logo-02.png' %}" alt="Logo"></div>
                                     <p>Lorem ipsum dolor amet consectur elit adicing elit sed do umod tempor ux incididunt enim ad minim veniam quis nosrud citation laboris nisiste aliquip comodo perspiatix.</p>
                                     <div class="rating-icon">
                                         <i class="icon-23"></i>
@@ -778,7 +784,7 @@
                                 </div>
                                 <div class="author-info">
                                     <div class="thumb">
-                                        <img src="static/assets/images/testimonial/testimonial-04.png" alt="Testimonial">
+                                        <img src="{% static 'assets/images/testimonial/testimonial-04.png' %}" alt="Testimonial">
                                     </div>
                                     <div class="info">
                                         <h5 class="title">Robert Tapp</h5>
@@ -792,17 +798,19 @@
                 <div class="swiper-pagination"></div>
                 <ul class="shape-group">
                     <li class="shape-1 scene" data-sal-delay="200" data-sal="fade" data-sal-duration="1000">
-                        <img data-depth="1.4" src="static/assets/images/about/shape-30.png" alt="Shape">
+                        <img data-depth="1.4" src="{% static 'assets/images/about/shape-30.png' %}" alt="Shape">
                     </li>
                     <li class="shape-2 scene" data-sal-delay="200" data-sal="fade" data-sal-duration="1000">
-                        <img data-depth="-1.4" src="static/assets/images/about/shape-25.png" alt="Shape">
+                        <img data-depth="-1.4" src="{% static 'assets/images/about/shape-25.png' %}" alt="Shape">
                     </li>
+                    
                 </ul>
             </div>
             <ul class="shape-group">
                 <li class="shape-3" data-sal-delay="200" data-sal="fade" data-sal-duration="1000">
-                    <img class="d-block-shape-light" data-depth="2" src="static/assets/images/others/map-shape-3.png" alt="Shape">
-                    <img class="d-none-shape-dark" data-depth="2" src="static/assets/images/others/dark-map-2-shape-3.png" alt="Shape">
+                    <img class="d-block-shape-light" data-depth="2" src="{% static 'assets/images/others/map-shape-3.png' %}" alt="Shape">
+                    <img class="d-none-shape-dark" data-depth="2" src="{% static 'assets/images/others/dark-map-2-shape-3.png' %}" alt="Shape">
+
                 </li>
             </ul>
         </div>
@@ -816,7 +824,7 @@
                     <div class="col-lg-6 col-md-8">
                         <div class="video-banner-content">
                             <div class="video-btn">
-                                <a href="https://www.youtube.com/watch?v=PICj5tr9hcc" class="video-play-btn video-popup-activation">
+                                <a href="{% static 'https://www.youtube.com/watch?v=PICj5tr9hcc' %}" class="video-play-btn video-popup-activation">
                                     <i class="icon-18"></i>
                                 </a>
                             </div>
@@ -872,7 +880,7 @@
                             <div class="inner">
                                 <div class="thumbnail">
                                     <a href="event-details.html">
-                                        <img src="static/assets/images/event/event-01.jpg" alt="Blog Images">
+                                        <img src="{% static 'assets/images/event/event-01.jpg' %}" alt="Blog Images">
                                     </a>
                                     <div class="event-time">
                                         <span><i class="icon-33"></i>08:00AM-10:00PM</span>
@@ -902,7 +910,7 @@
                             <div class="inner">
                                 <div class="thumbnail">
                                     <a href="event-details.html">
-                                        <img src="static/assets/images/event/event-02.jpg" alt="Blog Images">
+                                        <img src="{% static 'assets/images/event/event-02.jpg' %}" alt="Blog Images">
                                     </a>
                                     <div class="event-time">
                                         <span><i class="icon-33"></i>04:00PM-07:00PM</span>
@@ -932,7 +940,7 @@
                             <div class="inner">
                                 <div class="thumbnail">
                                     <a href="event-details.html">
-                                        <img src="static/assets/images/event/event-03.jpg" alt="Blog Images">
+                                        <img src="{% static 'assets/images/event/event-03.jpg' %}" alt="Blog Images">
                                     </a>
                                     <div class="event-time">
                                         <span><i class="icon-33"></i>10:00AM-11:00AM</span>
@@ -963,7 +971,7 @@
 
                 <ul class="shape-group">
                     <li class="shape-1" data-sal-delay="500" data-sal="fade" data-sal-duration="200">
-                        <img class="rotateit" src="static/assets/images/about/shape-13.png" alt="Shape">
+                        <img class="rotateit" src="{% static 'assets/images/about/shape-13.png' %}" alt="Shape">
                     </li>
                     <li class="shape-2 scene" data-sal-delay="500" data-sal="fade" data-sal-duration="200">
                         <span data-depth=".9"></span>
@@ -980,26 +988,26 @@
             <div class="container">
                 <div class="brand-grid-wrap brand-style-2">
                     <div class="brand-grid">
-                        <img src="static/assets/images/brand/brand-01.png" alt="Brand Logo">
+                        <img src="{% static 'assets/images/brand/brand-01.png' %}" alt="Brand Logo">
                     </div>
                     <div class="brand-grid">
-                        <img src="static/assets/images/brand/brand-02.png" alt="Brand Logo">
+                        <img src="{% static 'assets/images/brand/brand-02.png' %}" alt="Brand Logo">
                     </div>
                     <div class="brand-grid">
-                        <img src="static/assets/images/brand/brand-03.png" alt="Brand Logo">
+                        <img src="{% static 'assets/images/brand/brand-03.png' %}" alt="Brand Logo">
                     </div>
                     <div class="brand-grid">
-                        <img src="static/assets/images/brand/brand-04.png" alt="Brand Logo">
+                        <img src="{% static 'assets/images/brand/brand-04.png' %}" alt="Brand Logo">
                     </div>
                     <div class="brand-grid">
-                        <img src="static/assets/images/brand/brand-05.png" alt="Brand Logo">
+                        <img src="{% static 'assets/images/brand/brand-05.png' %}" alt="Brand Logo">
                     </div>
                     <div class="brand-grid">
-                        <img src="static/assets/images/brand/brand-06.png" alt="Brand Logo">
+                        <img src="{% static 'assets/images/brand/brand-06.png' %}" alt="Brand Logo">
                     </div>
                 </div>
             </div>
-        </div>
+            
         <!-- End Brand Area  -->
         <!--=====================================-->
         <!--=       CTA Banner Area Start      =-->
@@ -1018,17 +1026,18 @@
                     </div>
                     <ul class="shape-group">
                         <li class="shape-01 scene">
-                            <img data-depth="2.5" src="static/assets/images/cta/shape-10.png" alt="shape">
+                            <img data-depth="2.5" src="{% static 'assets/images/cta/shape-10.png' %}" alt="shape">
                         </li>
                         <li class="shape-02 scene">
-                            <img data-depth="-2.5" src="static/assets/images/cta/shape-09.png" alt="shape">
+                            <img data-depth="-2.5" src="{% static 'assets/images/cta/shape-09.png' %}" alt="shape">
                         </li>
                         <li class="shape-03 scene">
-                            <img data-depth="-2" src="static/assets/images/cta/shape-08.png" alt="shape">
+                            <img data-depth="-2" src="{% static 'assets/images/cta/shape-08.png' %}" alt="shape">
                         </li>
                         <li class="shape-04 scene">
-                            <img data-depth="2" src="static/assets/images/about/shape-13.png" alt="shape">
+                            <img data-depth="2" src="{% static 'assets/images/about/shape-13.png' %}" alt="shape">
                         </li>
+                        
                     </ul>
                 </div>
             </div>
@@ -1046,8 +1055,8 @@
                             <div class="edu-footer-widget">
                                 <div class="logo">
                                     <a href="/">
-                                        <img class="logo-light" src="static/assets/images/logo/logo-dark.png" alt="Corporate Logo">
-                                        <img class="logo-dark" src="static/assets/images/logo/logo-white.png" alt="Corporate Logo">
+                                        <img class="logo-light" src="{% static 'assets/images/logo/logo-dark.png' %}" alt="Corporate Logo">
+                                        <img class="logo-dark" src="{% static 'assets/images/logo/logo-white.png' %}" alt="Corporate Logo">
                                     </a>
                                 </div>
                                 <div class="widget-information">
@@ -1139,33 +1148,34 @@
     <!-- JS
 	============================================ -->
     <!-- Modernizer JS -->
-    <script src="static/assets/js/vendor/modernizr.min.js"></script>
-    <!-- Jquery Js -->
-    <script src="static/assets/js/vendor/jquery.min.js"></script>
-    <script src="static/assets/js/vendor/bootstrap.min.js"></script>
-    <script src="static/assets/js/vendor/sal.min.js"></script>
-    <script src="static/assets/js/vendor/jquery.waypoints.js"></script>
-    <script src="static/assets/js/vendor/backtotop.min.js"></script>
-    <script src="static/assets/js/vendor/magnifypopup.min.js"></script>
-    <script src="static/assets/js/vendor/jquery.countdown.min.js"></script>
-    <script src="static/assets/js/vendor/jQuery.rProgressbar.min.js"></script>
-    <script src="static/assets/js/vendor/easypie.js"></script>
-    <script src="static/assets/js/vendor/odometer.min.js"></script>
-    <script src="static/assets/js/vendor/isotop.min.js"></script>
-    <script src="static/assets/js/vendor/imageloaded.min.js"></script>
-    <script src="static/assets/js/vendor/lightbox.min.js"></script>
-    <script src="static/assets/js/vendor/paralax.min.js"></script>
-    <script src="static/assets/js/vendor/paralax-scroll.min.js"></script>
-    <script src="static/assets/js/vendor/jquery-ui.min.js"></script>
-    <script src="static/assets/js/vendor/swiper-bundle.min.js"></script>
-    <script src="static/assets/js/vendor/svg-inject.min.js"></script>
-    <script src="static/assets/js/vendor/vivus.min.js"></script>
-    <script src="static/assets/js/vendor/tipped.min.js"></script>
-    <script src="static/assets/js/vendor/smooth-scroll.min.js"></script>
-    <script src="static/assets/js/vendor/isInViewport.jquery.min.js"></script>
+    <script src="{% static 'assets/js/vendor/modernizr.min.js' %}"></script>
+<!-- Jquery Js -->
+<script src="{% static 'assets/js/vendor/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/vendor/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/vendor/sal.min.js' %}"></script>
+<script src="{% static 'assets/js/vendor/jquery.waypoints.js' %}"></script>
+<script src="{% static 'assets/js/vendor/backtotop.min.js' %}"></script>
+<script src="{% static 'assets/js/vendor/magnifypopup.min.js' %}"></script>
+<script src="{% static 'assets/js/vendor/jquery.countdown.min.js' %}"></script>
+<script src="{% static 'assets/js/vendor/jQuery.rProgressbar.min.js' %}"></script>
+<script src="{% static 'assets/js/vendor/easypie.js' %}"></script>
+<script src="{% static 'assets/js/vendor/odometer.min.js' %}"></script>
+<script src="{% static 'assets/js/vendor/isotop.min.js' %}"></script>
+<script src="{% static 'assets/js/vendor/imageloaded.min.js' %}"></script>
+<script src="{% static 'assets/js/vendor/lightbox.min.js' %}"></script>
+<script src="{% static 'assets/js/vendor/paralax.min.js' %}"></script>
+<script src="{% static 'assets/js/vendor/paralax-scroll.min.js' %}"></script>
+<script src="{% static 'assets/js/vendor/jquery-ui.min.js' %}"></script>
+<script src="{% static 'assets/js/vendor/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/vendor/svg-inject.min.js' %}"></script>
+<script src="{% static 'assets/js/vendor/vivus.min.js' %}"></script>
+<script src="{% static 'assets/js/vendor/tipped.min.js' %}"></script>
+<script src="{% static 'assets/js/vendor/smooth-scroll.min.js' %}"></script>
+<script src="{% static 'assets/js/vendor/isInViewport.jquery.min.js' %}"></script>
 
-    <!-- Site Scripts -->
-    <script src="static/assets/js/app.js"></script>
+<!-- Site Scripts -->
+<script src="{% static 'assets/js/app.js' %}"></script>
+
 </body>
 
 

@@ -16,6 +16,7 @@ urlpatterns = [
 
     #Auth
     path('login', views.login_page, name='login_page'),
+    path('accounts/login/', views.login_page, name='login_page'),
     path('signup', views.signup, name='signup'),
     path('student-info', views.student_info_form, name="student_info_form"),
     path('logout/',views.logout_page,name='logout_page'),
