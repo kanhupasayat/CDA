@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Table</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- FontAwesome CSS for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-SZXxX4whJ79/gErwcOYfzMEY6pFDV5yD5N1Fu0A8w4K3lI8V5W1U00t1w1RU0pX4" crossorigin="anonymous">
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .animated-table {
+            animation: fadeIn 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-3">
+        <div class="row align-items-center form-header">
+            <div class="col-12 col-md-2 text-center">
+                <img src="{% static 'assets/images/logo.png' %}" alt="Logo" class="img-fluid">
+            </div>
+            <div class="col-12 col-md-10 text-center text-md-left">
+                <h4>Career Development Academy Rourkela</h4>
+                <p>A community with high expectation and high academic achievement</p>
+                <p class="cinfo">
+                    <span><i class="fas fa-phone"></i> +91 987 676 5459</span><br class="d-md-none">
+                    <span><i class="fas fa-envelope"></i> adarsvidyakendra@gmail.com</span><br class="d-md-none">
+                    <span><i class="fas fa-map-marker-alt"></i> Smart City, Rourkela, Odisha</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    {% if messages %}
+        <div class="container mt-3">
+            <div class="alert alert-info" role="alert">
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+    
+    <div class="container mt-5">
+        <h2 class="mb-4 text-center">Student Information</h2>
+        <div class="table-responsive">
+            <form method="GET" action="">
+                <input type="text" name="q" id="searchInput" class="form-control" placeholder="Search for students..." value="{{ query|default:'' }}">
+                <button type="submit">Search</button>
+            </form>
+            <table class="table table-striped table-bordered animated-table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for x in student %}
+                    <tr>
+                        <td>{{ x.first_name }}</td>
+                        <td>{{ x.last_name }}</td>
+                        <td><a href="{% url 'student_admin_profile' email=x.email %}">{{ x.email }}</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRXU5NQ4U1u4H0Nq5Dqt7n4t68MhduhV6Wl5y69M4" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-QmopddKsxT1WOOSJ9IBRVQb4GbzBOx4COU38RcFx1pWlqUvcMtoquvQdpz2PHI+R" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cI6xEdguzMtu4ch48C4xnGq7AxqI3SY16E9g8O0CDIcQQ6hho9VmsAKz7smkG1y5" crossorigin="anonymous"></script>
+</body>
+</html>

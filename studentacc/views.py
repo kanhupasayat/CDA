@@ -22,6 +22,7 @@ from .models import StudentInfo
 
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
+from django.db.models import Q
 
 @login_required
 def change_password(request):
@@ -180,7 +181,6 @@ def student_info_form(request):
 
 
 
-@login_required
 def profile(request):
     try:
         student = StudentInfo.objects.get(user=request.user)
@@ -237,6 +237,11 @@ def profile(request):
 
 
 
+
+
+ 
+
+
 def course(request):
     return render(request,'course-one.html')
 
@@ -279,4 +284,16 @@ def about(request):
 
 
 
+def all_student(request):
+    student = User.objects.all()
+    return render (request,"show_all_student.html",{'student':student})
 
+
+@login_required
+def student_admin_profile(request, email):
+    try:
+        student = StudentInfo.objects.get(email=email)
+        return render(request, 'student_profile_admin.html', {'student': student})
+    except StudentInfo.DoesNotExist:
+        messages.warning(request, 'No profile found for this email.')
+        return redirect('/show_all_student')

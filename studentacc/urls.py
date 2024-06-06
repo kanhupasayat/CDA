@@ -33,6 +33,14 @@ urlpatterns = [
     path('change_password', views.change_password, name='change_password'),
 
 
+    #all student show url
+    path('show_all_student',views.all_student,name='all_student'),
+    path('student_profile/<str:email>/', views.student_admin_profile, name='student_admin_profile'),
+    
+
+
+
+
 ]
 
 if settings.DEBUG:
