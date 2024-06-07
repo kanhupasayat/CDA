@@ -180,7 +180,7 @@ def student_info_form(request):
 
 
 
-
+@login_required
 def profile(request):
     try:
         student = StudentInfo.objects.get(user=request.user)
@@ -295,5 +295,5 @@ def student_admin_profile(request, email):
         student = StudentInfo.objects.get(email=email)
         return render(request, 'student_profile_admin.html', {'student': student})
     except StudentInfo.DoesNotExist:
-        messages.warning(request, 'No profile found for this email.')
+        messages.warning(request, f"'No profile found for this - {email} - email.'")
         return redirect('/show_all_student')
